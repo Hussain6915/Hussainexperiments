@@ -75,7 +75,19 @@ const views = {
   water: "waterView",
   mood: "moodView",
   friend: "friendView"
+  overall: "overallView",
 };
+function updateOverallFinance() {
+  const overall = Number($("overallSavings").value || 0);
+  const monthly = Number($("statSavings").textContent.replace(/,/g,"") || 0);
+
+  $("monthlySavingsAuto").value = monthly;
+  $("totalSavingsAuto").value = overall + monthly;
+
+  $("tileSavings").textContent = fmtMoney(overall + monthly);
+}
+
+$("overallSavings").addEventListener("input", updateOverallFinance);
 
 function nav(to) {
   // hide all
@@ -1186,4 +1198,5 @@ if (avatarWrap && avatarInput && userAvatar) {
 
 
 }
+
 
