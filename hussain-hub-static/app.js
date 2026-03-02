@@ -439,6 +439,28 @@ function renderChips(el, items, onRemove) {
 let finServices = [];
 let finCustoms = [];
 let finExpensesTable = [];
+let remainingDays = 30;
+let dailyMonthlyValue = 0;
+$("dailyMonthly").addEventListener("input", () => {
+  dailyMonthlyValue = Number($("dailyMonthly").value || 0);
+  $("dailyAuto").value = (dailyMonthlyValue / remainingDays).toFixed(2);
+});
+
+$("recordTodayExpense").addEventListener("click", () => {
+  const val = Number($("todayExpenseInput").value || 0);
+  if (!val) return toast("Enter expense");
+
+  dailyMonthlyValue -= val;
+  remainingDays -= 1;
+
+  if (remainingDays < 1) remainingDays = 1;
+
+  $("dailyMonthly").value = dailyMonthlyValue;
+  $("dailyAuto").value = (dailyMonthlyValue / remainingDays).toFixed(2);
+
+  $("todayExpenseInput").value = "";
+  toast("Daily expense recorded ✅");
+});
 
 $("addServiceBtn").addEventListener("click", () => {
   const name = $("serviceName").value;
@@ -1164,3 +1186,4 @@ if (avatarWrap && avatarInput && userAvatar) {
 
 
 }
+
