@@ -328,9 +328,23 @@
               </label>
 
               <label class="field">
-                <span>Daily Expense (per day)</span>
-                <input id="finDaily" type="number" placeholder="e.g., 500" />
-              </label>
+  <span>Daily Expense Monthly</span>
+  <input id="dailyMonthly" type="number" />
+</label>
+
+<label class="field">
+  <span>Daily Expense (Auto)</span>
+  <input id="dailyAuto" type="number" readonly />
+</label>
+
+<label class="field">
+  <span>Record Today Expense</span>
+  <input id="todayExpenseInput" type="number" placeholder="Enter amount" />
+</label>
+
+<button class="btn btn-ghost" id="recordTodayExpense">
+  Record Today
+</button>
 
               <div class="divider"></div>
 
@@ -745,5 +759,6 @@
 </body>
 
 </html>
+
 
 
